@@ -1,5 +1,9 @@
 .wrapper {
   min-height: 100vh;
-  background: rgba(15, 1, 1, 0.911);
+  background: rgb(8, 5, 5);
   color: rgb(209, 9, 9);
+}
+
+.main {
+  min-height: calc(100vh - 150px);
 }

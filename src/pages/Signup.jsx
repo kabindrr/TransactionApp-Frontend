@@ -6,7 +6,7 @@ export const Signup = () => {
   return (
     <>
       <Container className="p-5">
-        <Row className="bg-dark p-5 rounded">
+        <Row className="bg-dark p-5 rounded shadow">
           <Col md={6}>
             <FinancialTips />
           </Col>
