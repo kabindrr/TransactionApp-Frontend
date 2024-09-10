@@ -7,10 +7,10 @@ export const Signup = () => {
     <>
       <Container className="p-5">
         <Row className="bg-dark p-5 rounded">
-          <Col>
+          <Col md={6}>
             <FinancialTips />
           </Col>
-          <Col>
+          <Col md={6}>
             <SignUpForm />
           </Col>
         </Row>
