@@ -1,7 +1,8 @@
-import { Button, Form, Toast } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { CustomInput } from "./CustomInput";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { postNewUser } from "../helpers/userAxios";
 
 export const SignUpForm = () => {
   const [form, setForm] = useState({});
@@ -44,7 +45,7 @@ export const SignUpForm = () => {
       [name]: value,
     });
   };
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const { confirmPassword, ...rest } = form;
@@ -53,6 +54,8 @@ export const SignUpForm = () => {
         theme: "dark",
       });
     }
+    const { status, message } = await postNewUser(rest);
+    toast[status](message, { theme: "dark" });
   };
 
   return (
