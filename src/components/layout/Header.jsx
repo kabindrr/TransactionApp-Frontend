@@ -2,6 +2,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { GiArchiveRegister } from "react-icons/gi";
+import { RiLoginBoxLine } from "react-icons/ri";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const Header = () => {
   return (
@@ -12,13 +15,13 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Link className="nav-link" to="/signup">
-              SignUp
+              <GiArchiveRegister /> Signup
             </Link>
             <Link className="nav-link" to="/login">
-              Login
+              <RiLoginBoxLine /> Login
             </Link>
             <Link className="nav-link" to="/logout">
-              Logout
+              <RiLogoutBoxLine /> Logout
             </Link>
           </Nav>
         </Navbar.Collapse>

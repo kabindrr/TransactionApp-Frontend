@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FcMoneyTransfer } from "react-icons/fc";
 
 const financialExpertTips = [
   {
@@ -78,10 +79,15 @@ export const FinancialTips = () => {
       className="d-flex flex-column justify-content-center "
       style={{ height: "100%" }}
     >
-      <h4>{tip}</h4>
-      <div className="fw-bolder">
-        {quote} - {author}
+      <div className="text-center p-5 " style={{ fontSize: "1.3rem" }}>
+        <FcMoneyTransfer
+          className="text-success"
+          style={{ fontSize: "10rem" }}
+        />
+        <div>Money Grows if you don't spend</div>
       </div>
+      <h4>{tip}</h4>
+      <div className="fw-bolder">- {author}</div>
     </div>
   );
 };
