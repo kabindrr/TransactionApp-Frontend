@@ -3,9 +3,16 @@ import { CustomInput } from "./CustomInput";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { postNewUser } from "../helpers/userAxios";
+import { useForm } from "../Hooks/useForm";
+
+const initialState = {
+  email: "",
+  password: "",
+};
 
 export const SignInForm = () => {
-  const [form, setForm] = useState({});
+  const { handleOnChange, form, setForm } = useForm(initialState);
+  // const [form, setForm] = useState({});
 
   const fields = [
     {
@@ -14,6 +21,7 @@ export const SignInForm = () => {
       required: true,
       type: "email",
       name: "email",
+      value: form.email,
     },
     {
       label: "Password",
@@ -21,16 +29,17 @@ export const SignInForm = () => {
       required: true,
       type: "password",
       name: "password",
+      value: form.password,
     },
   ];
 
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
+  // const handleOnChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setForm({
+  //     ...form,
+  //     [name]: value,
+  //   });
+  // };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
