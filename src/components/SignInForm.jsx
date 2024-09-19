@@ -2,7 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { CustomInput } from "./CustomInput";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { postNewUser } from "../helpers/userAxios";
+import { loginUser, postNewUser } from "../helpers/userAxios";
 import { useForm } from "../Hooks/useForm";
 
 const initialState = {
@@ -43,6 +43,10 @@ export const SignInForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
+
+    const { status, message, user, jwtToken } = await loginUser(form);
+    toast[status](message);
+    console.log(user, jwtToken);
   };
 
   return (

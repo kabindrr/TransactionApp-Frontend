@@ -9,3 +9,12 @@ export const postNewUser = (data) => {
   };
   return apiProcessor(axiosObj);
 };
+
+export const loginUser = (data) => {
+  const axiosObj = {
+    method: "post",
+    url: rootApiEP + "/users/login",
+    data: data,
+  };
+  return apiProcessor(axiosObj);
+};
