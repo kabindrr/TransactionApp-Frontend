@@ -1,7 +1,11 @@
-import React from 'react'
+import { Container, Row } from "react-bootstrap";
 
 export const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <>
+      <Container className="p-5">
+        <Row className="bg-dark p-5 rounded shadow">hey i am dashboard</Row>
+      </Container>
+    </>
+  );
+};

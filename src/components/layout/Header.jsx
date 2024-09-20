@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { IoHome } from "react-icons/io5";
+import { GiReceiveMoney } from "react-icons/gi";
 
 export const Header = () => {
   return (
@@ -14,12 +16,19 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link className="nav-link" to="/signup">
-              <GiArchiveRegister /> Signup
+            <Link className="nav-link" to="/dashboard">
+              <IoHome /> Dashboard
+            </Link>
+            <Link className="nav-link" to="/transactions">
+              <GiReceiveMoney /> Transactions
             </Link>
             <Link className="nav-link" to="/login">
               <RiLoginBoxLine /> Login
             </Link>
+            <Link className="nav-link" to="/signup">
+              <GiArchiveRegister /> Register
+            </Link>
+
             <Link className="nav-link" to="/logout">
               <RiLogoutBoxLine /> Logout
             </Link>
