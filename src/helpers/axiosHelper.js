@@ -13,7 +13,9 @@ export const apiProcessor = async (axiosObj) => {
   } catch (error) {
     return {
       status: "error",
-      message: error.message,
+
+      //showing raw error message from the server
+      message: error?.response?.data?.error || error.message,
     };
   }
 };

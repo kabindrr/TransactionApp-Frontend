@@ -44,7 +44,14 @@ export const SignInForm = () => {
     e.preventDefault();
     console.log(form);
 
+    //while loding showing promise insted of toast
+    const pendingState = loginUser(form);
+    toast.promise(pendingState, {
+      pending: "Please wait....",
+    });
+
     const { status, message, user, jwtToken } = await loginUser(form);
+
     toast[status](message);
     console.log(user, jwtToken);
   };
