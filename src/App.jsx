@@ -7,6 +7,7 @@ import { DefaultLayout } from "./components/layout/DefaultLayout";
 import { Logout } from "./pages/Logout";
 import { Dashboard } from "./pages/Dashboard";
 import { Transaction } from "./pages/Transaction";
+import { Loancalculator } from "./pages/Loancalculator";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/transactions" element={<Transaction/>}/>
+          <Route path="/loancalculator" element={<Loancalculator />} />
+          <Route path="/transactions" element={<Transaction />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />

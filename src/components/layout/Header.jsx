@@ -20,7 +20,7 @@ export const Header = () => {
             <Link className="nav-link" to="/dashboard">
               <IoHome /> Dashboard
             </Link>
-            <Link className="nav-link" to="/dashboard">
+            <Link className="nav-link" to="/loancalculator">
               <FaCreditCard /> Loancalculator
             </Link>
             <Link className="nav-link" to="/transactions">
