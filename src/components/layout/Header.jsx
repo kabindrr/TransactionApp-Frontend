@@ -7,6 +7,7 @@ import { RiLoginBoxLine } from "react-icons/ri";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { IoHome } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
+import { FaCreditCard } from "react-icons/fa6";
 
 export const Header = () => {
   return (
@@ -19,18 +20,20 @@ export const Header = () => {
             <Link className="nav-link" to="/dashboard">
               <IoHome /> Dashboard
             </Link>
+            <Link className="nav-link" to="/dashboard">
+              <FaCreditCard /> Loancalculator
+            </Link>
             <Link className="nav-link" to="/transactions">
               <GiReceiveMoney /> Transactions
             </Link>
             <Link className="nav-link" to="/login">
               <RiLoginBoxLine /> Login
             </Link>
-            <Link className="nav-link" to="/signup">
-              <GiArchiveRegister /> Register
-            </Link>
-
             <Link className="nav-link" to="/logout">
               <RiLogoutBoxLine /> Logout
+            </Link>
+            <Link className="nav-link" to="/signup">
+              <GiArchiveRegister /> Register
             </Link>
           </Nav>
         </Navbar.Collapse>
