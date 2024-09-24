@@ -1,8 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 export const Auth = ({ children }) => {
-  const isLoggedIn = false;
+  const { user, setUser } = useUser();
 
-  return isLoggedIn ? children : <Navigate to="/" replace />;
+  return user?._id ? children : <Navigate to="/" replace />;
 };

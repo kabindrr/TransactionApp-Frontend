@@ -6,8 +6,11 @@ import { Form } from "react-router-dom";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { BsGraphDownArrow } from "react-icons/bs";
 import { SignInForm } from "../components/SignInForm";
+import { useUser } from "../context/UserContext";
 
 export const Login = () => {
+  // const {user,setUser} = useUser();
+  
   return (
     <>
       <Container className="p-5">

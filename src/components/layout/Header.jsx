@@ -9,7 +9,11 @@ import { IoHome } from "react-icons/io5";
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaCreditCard } from "react-icons/fa6";
 
+import { useUser } from "../../context/UserContext";
+
 export const Header = () => {
+  // const data = useUser();
+
   return (
     <Navbar expand="lg " variant="dark" className="bg-body-dark">
       <Container>

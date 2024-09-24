@@ -1,9 +1,11 @@
 import { Button, Form } from "react-bootstrap";
 import { CustomInput } from "./CustomInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { loginUser, postNewUser } from "../helpers/userAxios";
 import { useForm } from "../Hooks/useForm";
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -11,8 +13,13 @@ const initialState = {
 };
 
 export const SignInForm = () => {
-  const { handleOnChange, form, setForm } = useForm(initialState);
-  // const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  const { user, setUser } = useUser();
+  const { handleOnChange, form } = useForm(initialState);
+
+  useEffect(() => {
+    user?._id && navigate("/dashboard");
+  }, [user?._id, navigate]);
 
   const fields = [
     {
@@ -33,13 +40,6 @@ export const SignInForm = () => {
     },
   ];
 
-  // const handleOnChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setForm({
-  //     ...form,
-  //     [name]: value,
-  //   });
-  // };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
@@ -54,6 +54,7 @@ export const SignInForm = () => {
 
     toast[status](message);
     console.log(user, jwtToken);
+    setUser(user);
   };
 
   return (
