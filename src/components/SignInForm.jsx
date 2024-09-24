@@ -55,6 +55,9 @@ export const SignInForm = () => {
     toast[status](message);
     console.log(user, jwtToken);
     setUser(user);
+
+    localStorage.setItem("jwtToken", jwtToken);
+    localStorage.setItem("userInfo", JSON.stringify(user));
   };
 
   return (
