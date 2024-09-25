@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { RiLogoutBoxLine } from "react-icons/ri";
@@ -12,7 +12,18 @@ import { FaCreditCard } from "react-icons/fa6";
 import { useUser } from "../../context/UserContext";
 
 export const Header = () => {
-  // const data = useUser();
+  const { setUser } = useUser();
+  const navigate = useNavigate();
+
+  const handleOnLogout = () => {
+    //1. On logout click delete "accessjwt " token from the localstorage
+    localStorage.removeItem("jwtToken");
+
+    //2. reset user obj from the state
+    setUser({});
+    //3.  redirect user to the login page.
+    navigate("/login");
+  };
 
   return (
     <Navbar expand="lg " variant="dark" className="bg-body-dark">
@@ -33,7 +44,7 @@ export const Header = () => {
             <Link className="nav-link" to="/login">
               <RiLoginBoxLine /> Login
             </Link>
-            <Link className="nav-link" to="/logout">
+            <Link onClick={handleOnLogout} className="nav-link" to="/logout">
               <RiLogoutBoxLine /> Logout
             </Link>
             <Link className="nav-link" to="/signup">
