@@ -12,10 +12,11 @@ import { FaCreditCard } from "react-icons/fa6";
 import { useUser } from "../../context/UserContext";
 
 export const Header = () => {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
 
-  const handleOnLogout = () => {
+  const handleOnLogout = (e) => {
+    e.preventDefault();
     //1. On logout click delete "accessjwt " token from the localstorage
     localStorage.removeItem("jwtToken");
 
@@ -32,24 +33,37 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link className="nav-link" to="/dashboard">
-              <IoHome /> Dashboard
-            </Link>
-            <Link className="nav-link" to="/loancalculator">
-              <FaCreditCard /> Loancalculator
-            </Link>
-            <Link className="nav-link" to="/transactions">
-              <GiReceiveMoney /> Transactions
-            </Link>
-            <Link className="nav-link" to="/login">
-              <RiLoginBoxLine /> Login
-            </Link>
-            <Link onClick={handleOnLogout} className="nav-link" to="/logout">
-              <RiLogoutBoxLine /> Logout
-            </Link>
-            <Link className="nav-link" to="/signup">
-              <GiArchiveRegister /> Register
-            </Link>
+            {/* updating navbar if its login or logout condition */}
+            {user?._id ? (
+              <>
+                <Link className="nav-link" to="/dashboard">
+                  <IoHome /> Dashboard
+                </Link>
+                <Link className="nav-link" to="/loancalculator">
+                  <FaCreditCard /> Loancalculator
+                </Link>
+                <Link className="nav-link" to="/transactions">
+                  <GiReceiveMoney /> Transactions
+                </Link>
+                <Link
+                  onClick={handleOnLogout}
+                  className="nav-link"
+                  to="/logout"
+                >
+                  <RiLogoutBoxLine /> Logout
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="nav-link" to="/login">
+                  <RiLoginBoxLine /> Login
+                </Link>
+
+                <Link className="nav-link" to="/signup">
+                  <GiArchiveRegister /> Register
+                </Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
