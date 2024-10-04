@@ -57,7 +57,6 @@ export const SignInForm = () => {
     setUser(user);
 
     localStorage.setItem("jwtToken", jwtToken);
-    localStorage.setItem("userInfo", JSON.stringify(user));
   };
 
   return (
