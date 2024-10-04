@@ -9,8 +9,21 @@ import { Dashboard } from "./pages/Dashboard";
 import { Transaction } from "./pages/Transaction";
 import { Loancalculator } from "./pages/Loancalculator";
 import { Auth } from "./auth/Auth";
+import { useEffect } from "react";
+import { autoLogin } from "./utils/users";
+import { useUser } from "./context/UserContext";
 
 const App = () => {
+  const { user, setUser } = useUser();
+
+  useEffect(() => {
+    !user?._id && updateUser();
+  }, [user?._id]);
+
+  const updateUser = async () => {
+    const user = await autoLogin();
+    setUser(user);
+  };
   return (
     <div className="wrapper">
       <Routes>
