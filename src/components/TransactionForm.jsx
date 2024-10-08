@@ -49,7 +49,7 @@ export const TransactionForm = () => {
       <Form onSubmit={handleOnSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Transaction Type</Form.Label>
-          <Form.Select name="type" onChange={handleOnChange}>
+          <Form.Select name="type" onChange={handleOnChange} required>
             <option value="">-- Select --</option>
             <option value="income">Income</option>
             <option value="expenses">Expenses</option>
