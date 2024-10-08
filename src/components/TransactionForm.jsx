@@ -19,13 +19,6 @@ export const TransactionForm = () => {
   };
   const fields = [
     {
-      label: "Type",
-      placeholder: "",
-      required: true,
-      type: "text",
-      name: "name",
-    },
-    {
       label: "title",
       placeholder: "Salary",
       required: true,
@@ -54,6 +47,15 @@ export const TransactionForm = () => {
     <div className="border rounded p-4">
       <h3 className="mb-5 text-center ">Add New Transaction!</h3>{" "}
       <Form onSubmit={handleOnSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Transaction Type</Form.Label>
+          <Form.Select name="type" onChange={handleOnChange}>
+            <option value="">-- Select --</option>
+            <option value="income">Income</option>
+            <option value="expenses">Expenses</option>
+          </Form.Select>
+        </Form.Group>
+
         {fields.map((input) => (
           <CustomInput key={input.name} {...input} onChange={handleOnChange} />
         ))}
