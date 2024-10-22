@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Toast } from "react-bootstrap";
 import { CustomInput } from "./CustomInput";
 import { useForm } from "../Hooks/useForm";
+import { postTransaction } from "../helpers/transactionAxios";
+import { toast } from "react-toastify";
 
 const initialState = {
   type: "",
@@ -13,9 +15,15 @@ const initialState = {
 export const TransactionForm = () => {
   const { form, setForm, handleOnChange } = useForm(initialState);
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    const pending = postTransaction(form);
+    toast.promise(pending, {
+      pending: "please wait ....",
+    });
+    const { status, message } = await pending;
+    toast[status](message);
+    status === "success" && setForm(initialState);
   };
   const fields = [
     {
