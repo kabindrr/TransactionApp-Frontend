@@ -16,3 +16,15 @@ export const postTransaction = (obj) => {
   };
   return apiProcessor(axiosObj);
 };
+
+export const fetchTransactions = () => {
+  const axiosObj = {
+    method: "GET",
+    url: rootApiEP + "/transactions",
+
+    headers: {
+      Authorization: getAccessJWT(),
+    },
+  };
+  return apiProcessor(axiosObj);
+};

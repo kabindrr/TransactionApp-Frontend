@@ -1,8 +1,14 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { TransactionForm } from "../components/TransactionForm";
 import { TransactionTable } from "../components/TransactionTable";
+import { useEffect } from "react";
+import { useUser } from "../context/UserContext";
 
 export const Transaction = () => {
+  const { getTransactions } = useUser();
+  useEffect(() => {
+    getTransactions();
+  }, []);
   return (
     <>
       <Container className="p-5">
