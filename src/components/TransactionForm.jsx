@@ -24,6 +24,8 @@ export const TransactionForm = () => {
     const { status, message } = await pending;
     toast[status](message);
     status === "success" && setForm(initialState);
+
+    //call the function to fetch all transactions
   };
   const fields = [
     {
