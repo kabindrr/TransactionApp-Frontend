@@ -4,6 +4,7 @@ import { CustomInput } from "./CustomInput";
 import { useForm } from "../Hooks/useForm";
 import { postTransaction } from "../helpers/transactionAxios";
 import { toast } from "react-toastify";
+import { useUser } from "../context/UserContext";
 
 const initialState = {
   type: "",
@@ -14,6 +15,7 @@ const initialState = {
 
 export const TransactionForm = () => {
   const { form, setForm, handleOnChange } = useForm(initialState);
+  const { getTransactions } = useUser;
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +25,10 @@ export const TransactionForm = () => {
     });
     const { status, message } = await pending;
     toast[status](message);
-    status === "success" && setForm(initialState);
+    if (status === "success") {
+      setForm(initialState);
+      getTransactions();
+    }
 
     //call the function to fetch all transactions
   };

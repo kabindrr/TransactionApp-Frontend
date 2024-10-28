@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { useUser } from "../context/UserContext";
 import { CgAddR } from "react-icons/cg";
+
 export const TransactionTable = () => {
+  const [displayTransactions, setDisplayTransactions] = useState([]);
   const { transactions } = useUser();
+
+  useEffect(() => {
+    setDisplayTransactions(transactions);
+  }, [transactions]);
   console.log(transactions);
-  const total = transactions.reduce((acc, item) => {
+  const total = displayTransactions.reduce((acc, item) => {
     return item.type === "income" ? acc + item.amount : acc - item.amount;
   }, 0);
+
+  const handleOnSearch = (e) => {
+    const { value } = e.target;
+    const filteredArg = transactions.filter(({ title }) => {
+      return title.toLowerCase().includes(value);
+    });
+
+    setDisplayTransactions(filteredArg);
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between p-3 mb-4">
-        <div>{transactions.length} transactions found</div>
+        <div>{displayTransactions.length} transactions found</div>
 
         <div>
-          <Form.Control type="text"></Form.Control>
+          <Form.Control type="text" onChange={handleOnSearch}></Form.Control>
         </div>
         <div>
           <Button>
@@ -33,8 +49,8 @@ export const TransactionTable = () => {
           </tr>
         </thead>
         <tbody>
-          {transactions.length > 0 &&
-            transactions.map((t, i) => (
+          {displayTransactions.length > 0 &&
+            displayTransactions.map((t, i) => (
               <tr key={t._id}>
                 <td>{i + 1}</td>
                 <td>{t.createdAt.slice(0, 10)}</td>
