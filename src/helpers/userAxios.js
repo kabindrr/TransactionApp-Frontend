@@ -34,3 +34,5 @@ export const getUser = () => {
   };
   return apiProcessor(axiosObj);
 };
+
+//integrating delete feature in transaction app
