@@ -28,3 +28,14 @@ export const fetchTransactions = () => {
   };
   return apiProcessor(axiosObj);
 };
+export const deleteTransactions = (data) => {
+  const axiosObj = {
+    method: "Delete",
+    url: rootApiEP + "/transactions",
+    data,
+    headers: {
+      Authorization: getAccessJWT(),
+    },
+  };
+  return apiProcessor(axiosObj);
+};

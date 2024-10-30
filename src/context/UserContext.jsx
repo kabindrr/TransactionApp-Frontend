@@ -7,6 +7,9 @@ export const userContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [transactions, setTransactions] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const toggleModal = (value) => setShow(value);
 
   const getTransactions = async () => {
     //call axios helper to call api
@@ -19,7 +22,15 @@ export const UserProvider = ({ children }) => {
 
   return (
     <userContext.Provider
-      value={{ user, setUser, transactions, setTransactions, getTransactions }}
+      value={{
+        user,
+        setUser,
+        transactions,
+        setTransactions,
+        getTransactions,
+        toggleModal,
+        show,
+      }}
     >
       {children}
     </userContext.Provider>

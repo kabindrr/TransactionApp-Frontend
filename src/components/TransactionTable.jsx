@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { useUser } from "../context/UserContext";
 import { CgAddR } from "react-icons/cg";
+import { deleteTransactions } from "../helpers/transactionAxios";
+import { toast } from "react-toastify";
 
 export const TransactionTable = () => {
   const [displayTransactions, setDisplayTransactions] = useState([]);
-  const { transactions } = useUser();
+  const { transactions, toggleModal, getTransactions } = useUser();
+  const [idsToDelete, setIdsToDelete] = useState([]);
 
   useEffect(() => {
     setDisplayTransactions(transactions);
+    console.log(transactions);
   }, [transactions]);
-  console.log(transactions);
   const total = displayTransactions.reduce((acc, item) => {
     return item.type === "income" ? acc + item.amount : acc - item.amount;
   }, 0);
@@ -24,6 +27,39 @@ export const TransactionTable = () => {
     setDisplayTransactions(filteredArg);
   };
 
+  const handleOnSelect = (e) => {
+    const { checked, value } = e.target;
+    if (value === "all") {
+      if (checked) {
+        const allIds = displayTransactions.map((item) => item._id);
+        setIdsToDelete(allIds);
+      } else {
+        setIdsToDelete([]);
+      }
+      return;
+    }
+    if (checked) {
+      setIdsToDelete([...idsToDelete, value]);
+    } else {
+      const temArg = idsToDelete.filter((id) => id !== value);
+      setIdsToDelete(temArg);
+    }
+    return;
+  };
+
+  const handleOnDelete = async () => {
+    if (
+      confirm(
+        `Are you sure you want to delete ${idsToDelete.length} transactions`
+      )
+    ) {
+      const { status, message } = await deleteTransactions(idsToDelete);
+
+      toast[status](message);
+      status === "success" && getTransactions() && setIdsToDelete([]);
+    }
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between p-3 mb-4">
@@ -33,10 +69,18 @@ export const TransactionTable = () => {
           <Form.Control type="text" onChange={handleOnSearch}></Form.Control>
         </div>
         <div>
-          <Button>
+          <Button onClick={() => toggleModal(true)}>
             <CgAddR /> Add new Transaction
           </Button>
         </div>
+      </div>
+      <div>
+        <Form.Check
+          label="Select All"
+          value="all"
+          onChange={handleOnSelect}
+          checked={displayTransactions.length === idsToDelete.length}
+        />
       </div>
       <Table striped hover>
         <thead>
@@ -53,7 +97,14 @@ export const TransactionTable = () => {
             displayTransactions.map((t, i) => (
               <tr key={t._id}>
                 <td>{i + 1}</td>
-                <td>{t.createdAt.slice(0, 10)}</td>
+                <td>
+                  <Form.Check
+                    label={t.createdAt.slice(0, 10)}
+                    value={t._id}
+                    onChange={handleOnSelect}
+                    checked={idsToDelete.includes(t._id)}
+                  />
+                </td>
 
                 <td>{t.title}</td>
 
@@ -80,6 +131,13 @@ export const TransactionTable = () => {
           </tr>
         </tbody>
       </Table>
+      {idsToDelete.length > 0 && (
+        <div className="d-grid">
+          <Button variant="danger" onClick={handleOnDelete}>
+            Delete {idsToDelete.length} Transactions{" "}
+          </Button>
+        </div>
+      )}
     </>
   );
 };

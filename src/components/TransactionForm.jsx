@@ -15,7 +15,7 @@ const initialState = {
 
 export const TransactionForm = () => {
   const { form, setForm, handleOnChange } = useForm(initialState);
-  const { getTransactions } = useUser;
+  const { getTransactions, toggleModal } = useUser();
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +27,12 @@ export const TransactionForm = () => {
     toast[status](message);
     if (status === "success") {
       setForm(initialState);
+      //call the function to fetch all transactions
       getTransactions();
-    }
 
-    //call the function to fetch all transactions
+      //close the modal
+      toggleModal();
+    }
   };
   const fields = [
     {
