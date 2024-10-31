@@ -1,5 +1,5 @@
 import { apiProcessor } from "./axiosHelper.js";
-const rootApiEP = "http://localhost:8001/api/v1";
+const rootApiEP = import.meta.VITE_ROOT_API;
 
 const getAccessJWT = () => {
   return localStorage.getItem("jwtToken");

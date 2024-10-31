@@ -3,7 +3,7 @@ const getAccessJWT = () => {
   return localStorage.getItem("jwtToken");
 };
 
-const rootApiEP = "http://localhost:8001/api/v1";
+const rootApiEP = import.meta.env.VITE_ROOT_API;
 
 export const postTransaction = (data) => {
   const axiosObj = {
@@ -14,7 +14,7 @@ export const postTransaction = (data) => {
       Authorization: getAccessJWT(),
     },
   };
- 
+
   return apiProcessor(axiosObj);
 };
 
