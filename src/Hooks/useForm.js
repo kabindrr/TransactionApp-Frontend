@@ -11,6 +11,7 @@ const handleOnChange = ({ e, form, setForm }) => {
 
 export const useForm = (initialState) => {
   const [form, setForm] = useState(initialState);
+  console.log(form);
 
   return {
     form,

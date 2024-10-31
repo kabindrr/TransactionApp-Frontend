@@ -5,15 +5,16 @@ const getAccessJWT = () => {
 
 const rootApiEP = "http://localhost:8001/api/v1";
 
-export const postTransaction = (obj) => {
+export const postTransaction = (data) => {
   const axiosObj = {
     method: "POST",
     url: rootApiEP + "/transactions",
-    data: obj,
+    data: data,
     headers: {
       Authorization: getAccessJWT(),
     },
   };
+ 
   return apiProcessor(axiosObj);
 };
 

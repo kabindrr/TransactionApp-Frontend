@@ -14,6 +14,9 @@ export const TransactionTable = () => {
     setDisplayTransactions(transactions);
     console.log(transactions);
   }, [transactions]);
+
+
+
   const total = displayTransactions.reduce((acc, item) => {
     return item.type === "income" ? acc + item.amount : acc - item.amount;
   }, 0);
@@ -99,7 +102,7 @@ export const TransactionTable = () => {
                 <td>{i + 1}</td>
                 <td>
                   <Form.Check
-                    label={t.createdAt.slice(0, 10)}
+                    label={t.tdate.slice(0, 10)}
                     value={t._id}
                     onChange={handleOnSelect}
                     checked={idsToDelete.includes(t._id)}

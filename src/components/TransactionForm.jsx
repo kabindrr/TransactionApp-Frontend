@@ -15,6 +15,7 @@ const initialState = {
 
 export const TransactionForm = () => {
   const { form, setForm, handleOnChange } = useForm(initialState);
+ 
   const { getTransactions, toggleModal } = useUser();
 
   const handleOnSubmit = async (e) => {
@@ -53,7 +54,7 @@ export const TransactionForm = () => {
     },
     {
       label: "Transaction Date",
-
+      placeholder: "2024/10/30",
       required: true,
       type: "date",
       name: "tdate",
