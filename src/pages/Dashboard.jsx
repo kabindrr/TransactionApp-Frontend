@@ -10,6 +10,9 @@ export const Dashboard = () => {
           
           {/* dashboard update with balance */}
 
+
+          {/* dashboard with income and expenses graph */}
+
           <MyBarChart />
         </Row>
       </Container>
