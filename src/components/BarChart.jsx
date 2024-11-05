@@ -137,7 +137,7 @@ const MyBarChart = () => {
           />
           <div style={{ fontSize: "1.1em", fontWeight: "bold" }}>Expenses</div>
           <div style={{ fontSize: "1.5em" }}>
-            ${totalIncome.toLocaleString()}
+            ${totalExpenses.toLocaleString()}
           </div>
         </div>
       </div>
