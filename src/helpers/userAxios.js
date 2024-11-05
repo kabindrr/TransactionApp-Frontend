@@ -1,5 +1,5 @@
 import { apiProcessor } from "./axiosHelper.js";
-const rootApiEP = import.meta.VITE_ROOT_API;
+const rootApiEP = "https://transactionapp-backend-1.onrender.com/api/v1";
 
 const getAccessJWT = () => {
   return localStorage.getItem("jwtToken");

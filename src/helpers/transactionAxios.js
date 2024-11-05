@@ -3,7 +3,8 @@ const getAccessJWT = () => {
   return localStorage.getItem("jwtToken");
 };
 
-const rootApiEP = import.meta.env.VITE_ROOT_API;
+const rootApiEP = "https://transactionapp-backend-1.onrender.com/api/v1";
+console.log(rootApiEP);
 
 export const postTransaction = (data) => {
   const axiosObj = {
