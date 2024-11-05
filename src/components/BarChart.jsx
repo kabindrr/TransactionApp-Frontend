@@ -60,36 +60,6 @@ const MyBarChart = () => {
         style={{
           display: "flex",
           justifyContent: "space-around",
-          margin: "20px 0",
-        }}
-      >
-        <div style={{ textAlign: "center", color: balanceColor }}>
-          <FaBalanceScale size={24} />
-          <div>
-            <strong>Total Balance</strong>
-          </div>
-          <div style={{ fontSize: "1.2em" }}>${totalBalance}</div>
-        </div>
-        <div style={{ textAlign: "center", color: "green" }}>
-          <FaArrowUp size={24} />
-          <div>
-            <strong>Total Income</strong>
-          </div>
-          <div style={{ fontSize: "1.2em" }}>${totalIncome}</div>
-        </div>
-        <div style={{ textAlign: "center", color: "red" }}>
-          <FaArrowDown size={24} />
-          <div>
-            <strong>Total Expenses</strong>
-          </div>
-          <div style={{ fontSize: "1.2em" }}>${totalExpenses}</div>
-        </div>
-      </div> */}
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
           margin: "30px 0",
         }}
       >
@@ -140,7 +110,7 @@ const MyBarChart = () => {
             ${totalExpenses.toLocaleString()}
           </div>
         </div>
-      </div>
+      </div> */}
       <ResponsiveContainer width="100%" height={400}>
         <BarChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
