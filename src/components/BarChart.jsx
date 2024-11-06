@@ -25,6 +25,7 @@ const MyBarChart = () => {
     name: transaction.tdate.slice(0, 10),
     Income: transaction.type == "income" ? transaction.amount : 0,
     Expenses: transaction.type == "expenses" ? -transaction.amount : 0,
+    title: transaction.title,
   }));
 
   const totalIncome = transactions
@@ -48,6 +49,7 @@ const MyBarChart = () => {
           <Legend />
           <Bar dataKey="Income" fill="green" />
           <Bar dataKey="Expenses" fill="red" />
+          
           <br />
         </BarChart>
       </ResponsiveContainer>

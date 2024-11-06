@@ -23,7 +23,6 @@ const MyPieChart = () => {
   const chartData = [
     { name: "Income", value: totalIncome, color: "green" },
     { name: "Expenses", value: totalExpenses, color: "red" },
-    { name: "Balance", value: totalBalance, color: "skyblue" },
   ];
 
   const renderCustomizedLabel = ({
