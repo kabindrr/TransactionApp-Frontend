@@ -29,7 +29,13 @@ export const Header = () => {
   return (
     <Navbar expand="lg " variant="dark" className="bg-body-dark">
       <Container>
-        <Navbar.Brand href="#home">Financial Tracker</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            src="./src/assets/logo3.png"
+            style={{ width: "300px", height: "auto" }}
+            alt=""
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
