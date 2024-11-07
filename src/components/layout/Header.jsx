@@ -31,7 +31,7 @@ export const Header = () => {
       <Container>
         <Navbar.Brand href="#home">
           <img
-            src="./src/assets/logo3.png"
+            src="/logo3.png"
             style={{ width: "300px", height: "auto" }}
             alt=""
           />
